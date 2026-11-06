@@ -1,0 +1,140 @@
+{
+  "run_id": "challenger-58049eaf",
+  "commit": "fa68464",
+  "timestamp": "2026-11-06T19:47:54+00:00",
+  "provider": "none",
+  "model": "challenger-58049eaf",
+  "metrics": {
+    "pr_auc": 0.7613275736315147,
+    "roc_auc": 0.9849993847451965,
+    "precision_at_1pct": 0.11403508771929824,
+    "recall_at_1pct": 0.8666666666666667,
+    "precision_at_01pct": 0.8421052631578947,
+    "recall_at_01pct": 0.64,
+    "brier": 0.0005058200140580471,
+    "cost_per_10k": 454.6890909729293,
+    "alert_rate": 0.0022471121098276044
+  },
+  "cases": [
+    {
+      "id": "window-00",
+      "scores": {
+        "cost_per_10k": 351.06196243637,
+        "frauds": 6.0,
+        "recall": 0.8333333333333334
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-01",
+      "scores": {
+        "cost_per_10k": 307.17921713182375,
+        "frauds": 12.0,
+        "recall": 0.9166666666666666
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-02",
+      "scores": {
+        "cost_per_10k": 52.668539325842694,
+        "frauds": 12.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-03",
+      "scores": {
+        "cost_per_10k": 833.9185393258427,
+        "frauds": 11.0,
+        "recall": 0.7272727272727273
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-04",
+      "scores": {
+        "cost_per_10k": 1106.0393258426966,
+        "frauds": 12.0,
+        "recall": 0.6666666666666666
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-05",
+      "scores": {
+        "cost_per_10k": 17.5561797752809,
+        "frauds": 4.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-06",
+      "scores": {
+        "cost_per_10k": 333.5674157303371,
+        "frauds": 6.0,
+        "recall": 0.8333333333333334
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-07",
+      "scores": {
+        "cost_per_10k": 368.67977528089887,
+        "frauds": 2.0,
+        "recall": 0.5
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-08",
+      "scores": {
+        "cost_per_10k": 895.3651685393259,
+        "frauds": 5.0,
+        "recall": 0.4
+      },
+      "passed": false,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-09",
+      "scores": {
+        "cost_per_10k": 280.8988764044944,
+        "frauds": 5.0,
+        "recall": 0.8
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    }
+  ],
+  "meta": {
+    "role": "challenger",
+    "data": "creditcard.parquet",
+    "split": "test",
+    "n_test": 56962,
+    "n_fraud_test": 75,
+    "threshold": 0.020210945854359664,
+    "cost_fp": 5.0,
+    "cost_fn": 150.0
+  }
+}

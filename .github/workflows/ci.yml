@@ -1,0 +1,82 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# `llm-evalops` is a path dependency (`../llm-evalops`, see [tool.uv.sources] in pyproject.toml).
+# actions/checkout cannot write outside $GITHUB_WORKSPACE, so both repos are checked out side by
+# side inside it (fraud-scoring-service/ and llm-evalops/) and every step runs from
+# fraud-scoring-service/. The sibling repo must be public; if it is private, add a read-only
+# token as the EVALOPS_TOKEN secret.
+defaults:
+  run:
+    working-directory: fraud-scoring-service
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: fraud-scoring-service
+      - uses: actions/checkout@v4
+        with:
+          repository: palademian-jose/llm-evalops
+          path: llm-evalops
+          token: ${{ secrets.EVALOPS_TOKEN || github.token }}
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: fraud-scoring-service/uv.lock
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: Lint
+        run: |
+          uv run ruff check src tests scripts
+          uv run ruff format --check src tests scripts
+      - name: Test
+        run: uv run pytest -q
+
+  gate:
+    runs-on: ubuntu-latest
+    needs: lint-test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: fraud-scoring-service
+      - uses: actions/checkout@v4
+        with:
+          repository: palademian-jose/llm-evalops
+          path: llm-evalops
+          token: ${{ secrets.EVALOPS_TOKEN || github.token }}
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: fraud-scoring-service/uv.lock
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      # CI never downloads the dataset: it trains on the committed 5,000-row sample.
+      - name: Train on the sample
+        run: |
+          uv run fraudscore train --data data/sample/creditcard_sample.parquet \
+            --models-dir models/ci --reports-dir reports/ci
+      - name: Champion vs challenger
+        run: |
+          uv run fraudscore compare --data data/sample/creditcard_sample.parquet \
+            --champion models/ci/champion.joblib --challenger models/ci/challenger.joblib \
+            --out-dir reports/ci
+      - name: Regression gate (champion vs committed sample baseline)
+        run: |
+          uv run evalkit gate \
+            --baseline reports/baseline-sample.json \
+            --candidate reports/ci/eval-champion.json \
+            --config evals.yaml \
+            --md reports/ci/gate.md \
+            --annotate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reports
+          path: fraud-scoring-service/reports/ci/

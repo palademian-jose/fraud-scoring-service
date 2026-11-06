@@ -1,0 +1,140 @@
+{
+  "run_id": "champion-081c9d5c",
+  "commit": "fa68464",
+  "timestamp": "2026-11-06T19:47:34+00:00",
+  "provider": "none",
+  "model": "champion-081c9d5c",
+  "metrics": {
+    "pr_auc": 0.9202179042479111,
+    "roc_auc": 0.9784209375227819,
+    "precision_at_1pct": 1.0,
+    "recall_at_1pct": 0.23255813953488372,
+    "precision_at_01pct": 1.0,
+    "recall_at_01pct": 0.023255813953488372,
+    "brier": 0.008732565232892772,
+    "cost_per_10k": 8200.0,
+    "alert_rate": 0.052
+  },
+  "cases": [
+    {
+      "id": "window-00",
+      "scores": {
+        "cost_per_10k": 15000.0,
+        "frauds": 3.0,
+        "recall": 0.6666666666666666
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-01",
+      "scores": {
+        "cost_per_10k": 1500.0,
+        "frauds": 8.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-02",
+      "scores": {
+        "cost_per_10k": 500.0,
+        "frauds": 6.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-03",
+      "scores": {
+        "cost_per_10k": 31000.0,
+        "frauds": 5.0,
+        "recall": 0.6
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-04",
+      "scores": {
+        "cost_per_10k": 500.0,
+        "frauds": 6.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-05",
+      "scores": {
+        "cost_per_10k": 0.0,
+        "frauds": 3.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-06",
+      "scores": {
+        "cost_per_10k": 1000.0,
+        "frauds": 4.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-07",
+      "scores": {
+        "cost_per_10k": 500.0,
+        "frauds": 1.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-08",
+      "scores": {
+        "cost_per_10k": 31500.0,
+        "frauds": 4.0,
+        "recall": 0.5
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "window-09",
+      "scores": {
+        "cost_per_10k": 500.0,
+        "frauds": 3.0,
+        "recall": 1.0
+      },
+      "passed": true,
+      "latency_ms": 0.0,
+      "cost_usd": 0.0
+    }
+  ],
+  "meta": {
+    "role": "champion",
+    "data": "creditcard_sample.parquet",
+    "split": "test",
+    "n_test": 1000,
+    "n_fraud_test": 43,
+    "threshold": 0.08326188809260805,
+    "cost_fp": 5.0,
+    "cost_fn": 150.0
+  }
+}

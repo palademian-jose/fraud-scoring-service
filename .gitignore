@@ -12,5 +12,6 @@ dist/
 # Runtime artifacts, anchored to the repo root so no source directory is ignored
 /data/raw/
 /models/
+/data/synthetic/
 /reports/demo/
 /reports/ci/

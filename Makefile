@@ -36,7 +36,7 @@ results:          ## reports/results.md and the README results table
 	$(UV) run python scripts/results_table.py
 
 drift-demo:       ## shifted synthetic stream against the champion -> reports/drift-<date>.md
-	$(UV) run python scripts/synth.py --shift --rows 5000 --out data/synthetic/stream_shifted.parquet
+	$(UV) run python scripts/synth.py --reference $(or $(REF),data/raw/creditcard.parquet) --shift --rows 5000 --out data/synthetic/stream_shifted.parquet
 	$(UV) run fraudscore drift data/synthetic/stream_shifted.parquet
 
 compare:          ## champion vs challenger on the test split -> reports/eval-*.json, compare.md
