@@ -1,0 +1,14 @@
+# Gate thresholds read by `evalkit gate` (llm-evalops), used in two places:
+#   1. CI regression gate: fresh champion (sample data) vs reports/baseline-sample.json.
+#   2. `fraudscore compare`: challenger (candidate) vs champion (baseline) before promotion.
+#
+# min / max are absolute bounds on the candidate. max_drop (higher is better) and
+# max_increase (lower is better) bound the change against the baseline.
+# Floors are set below the real full-data champion (PR-AUC 0.78 on the test split); the
+# sample-trained CI model scores higher because the sample is fraud-enriched, so the same
+# file is safe for both. recall_at_1pct has no absolute floor: on the 1,000-row sample test
+# split the top 1% is 10 alerts against 43 frauds, which caps recall at 0.23.
+metrics:
+  pr_auc: {min: 0.70, max_drop: 0.02}
+  recall_at_1pct: {max_drop: 0.05}
+  cost_per_10k: {max_increase: 50}

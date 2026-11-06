@@ -1,0 +1,16 @@
+# Drift thresholds read by `fraudscore drift`.
+#
+# With tens of thousands of rows a KS p-value is tiny for almost any difference, so a feature
+# counts as drifted only when the KS p-value is below `ks.pvalue` AND the KS statistic is at
+# least `ks.statistic` (an effect size), or when PSI crosses its threshold.
+ks:
+  pvalue: 0.01
+  statistic: 0.10
+psi:
+  bins: 10        # quantile bins taken from the training reference
+  warn: 0.10
+  alert: 0.25
+# Verdict: ALERT if the score distribution alerts, or at least this many features alert.
+min_features_alert: 3
+# Do not test a batch smaller than this; the tests are not reliable on tiny batches.
+min_rows: 200
