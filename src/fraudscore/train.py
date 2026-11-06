@@ -44,7 +44,7 @@ def evaluate_bundle(
         "threshold": bundle.threshold,
         "trained_on": bundle.trained_on,
     }
-    for name, part in (("valid", split.valid), ("test", split.test)):
+    for name, part in (("train", split.train), ("valid", split.valid), ("test", split.test)):
         y = part[TARGET].to_numpy()
         margin = bundle.margin(part)
         proba = bundle.calibrator.predict(margin)
