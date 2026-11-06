@@ -16,7 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--raw", type=Path, default=ROOT / "data" / "raw" / "creditcard.parquet")
-    p.add_argument("--sample", type=Path, default=ROOT / "data" / "sample" / "creditcard_sample.parquet")
+    p.add_argument(
+        "--sample", type=Path, default=ROOT / "data" / "sample" / "creditcard_sample.parquet"
+    )
     p.add_argument("--rows", type=int, default=5000)
     args = p.parse_args()
 

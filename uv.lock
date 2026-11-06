@@ -288,7 +288,7 @@ dev = [
 requires-dist = [
     { name = "fastapi", specifier = ">=0.115" },
     { name = "joblib", specifier = ">=1.4" },
-    { name = "lightgbm", specifier = ">=4.5" },
+    { name = "lightgbm", specifier = ">=4.7" },
     { name = "llm-evalops", editable = "../llm-evalops" },
     { name = "matplotlib", specifier = ">=3.9" },
     { name = "pandas", specifier = ">=2.2" },

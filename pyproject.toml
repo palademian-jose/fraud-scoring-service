@@ -43,6 +43,9 @@ src = ["src", "tests", "scripts"]
 select = ["E", "F", "I", "B", "UP", "W", "N", "SIM", "RUF"]
 ignore = ["RUF012"]
 
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["B011"]
 "src/fraudscore/*" = ["N803", "N806"]
