@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     data_path: Path = ROOT / "data" / "raw" / "creditcard.parquet"
     sample_path: Path = ROOT / "data" / "sample" / "creditcard_sample.parquet"
     models_dir: Path = ROOT / "models"
+    model_path: Path = ROOT / "models" / "champion.joblib"
     reports_dir: Path = ROOT / "reports"
     monitoring_config: Path = ROOT / "monitoring.yaml"
 
