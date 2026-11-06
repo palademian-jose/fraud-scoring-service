@@ -79,7 +79,7 @@ def eval_result(
         "alert_rate": cost.alert_rate,
     }
     return {
-        "run_id": f"{role}-{bundle.version}",
+        "run_id": bundle.version,
         "commit": git_commit(),
         "timestamp": datetime.now(UTC).isoformat(timespec="seconds"),
         "provider": "none",

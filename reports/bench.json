@@ -1,0 +1,25 @@
+{
+  "model_version": "champion-20a4a933",
+  "frauds_in_payloads": 50,
+  "budget_p95_ms": 50.0,
+  "within_budget": true,
+  "host": "localhost, single uvicorn worker, sequential client, CPU only",
+  "with_reason_codes": {
+    "explain": true,
+    "requests": 500,
+    "p50_ms": 13.89,
+    "p95_ms": 20.75,
+    "p99_ms": 26.8,
+    "max_ms": 40.23,
+    "throughput_rps": 68.9
+  },
+  "without_reason_codes": {
+    "explain": false,
+    "requests": 500,
+    "p50_ms": 6.77,
+    "p95_ms": 10.74,
+    "p99_ms": 13.64,
+    "max_ms": 21.04,
+    "throughput_rps": 139.8
+  }
+}

@@ -24,7 +24,8 @@ def make_stream(
     out = reference.iloc[idx][ALL_COLUMNS].reset_index(drop=True).copy()
     std = reference[FEATURES].std().to_numpy()
     out[FEATURES] = out[FEATURES].to_numpy() + rng.normal(0, 0.05, (rows, len(FEATURES))) * std
-    out["Amount"] = out["Amount"].clip(lower=0)
+    # Amount is heavy-tailed and bounded below by zero, so jitter it multiplicatively.
+    out["Amount"] = reference.iloc[idx]["Amount"].to_numpy() * np.exp(rng.normal(0, 0.05, rows))
     if shift:
         for name, units in SHIFTS.items():
             out[name] = out[name] + units * reference[name].std()
